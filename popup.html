@@ -6,14 +6,46 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="content">
-    <h1>LeetCode Stats</h1>
+
+  <div id="login">
+    <h1>LeetCode Login</h1>
+    <input type="text" id="username" placeholder="Enter your LeetCode username" size="27">
+    <br />
+    <button id="loginButton">Sign In</button>
+  </div>
+
+  <div id="content" style="display:none;">
+    <h1 id="user"></h1>
     <div id="stats">
-      <p>Easy: <span id="easySolved"></span></p>
-      <p>Medium: <span id="mediumSolved"></span></p>
-      <p>Hard: <span id="hardSolved"></span></p>
+      <div class="stat easy">
+        <p>Easy</p>
+        <p id="easySolved"></p>
+      </div>
+      <div class="stat medium">
+        <p>Med.</p>
+        <p id="mediumSolved"></p>
+      </div>
+      <div class="stat hard">
+        <p>Hard</p>
+        <p id="hardSolved"></p>
+      </div>
+      <div class="stat total">
+        <p>Total</p>
+        <p id="totalSolved"></p>
+      </div>
+      <div class="stat acceptance">
+        <p>Acceptance Rate</p>
+        <p id="acceptanceRate"></p>
+      </div>
+      <div class="stat ranking">
+        <p>Ranking</p>
+        <p id="ranking"></p>
+      </div>
+      <button id="profileButton">Go to Profile</button>
+      <button id="logoutButton">Log Out</button>
     </div>
   </div>
+
   <script src="popup.js"></script>
 </body>
 </html>
