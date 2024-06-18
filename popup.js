@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchLeetCodeData(storedUsername);
         loginDiv.style.display = 'none';
         contentDiv.style.display = 'block';
-        setPopupSize(500, 300);
+        setPopupSize(550, 400);
     }
 
     loginButton.addEventListener('click', function() {
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
           fetchLeetCodeData(username);
           loginDiv.style.display = 'none';
           contentDiv.style.display = 'block';
-          setPopupSize(500, 300);
+          setPopupSize(550, 400);
         }
     });
 
