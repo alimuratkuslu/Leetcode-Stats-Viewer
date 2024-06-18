@@ -97,4 +97,16 @@ body {
     width: 100px; 
     border-radius: 5px;
   }
+
+  #chartContainer {
+    position: relative;
+    margin: 0 auto; 
+    top: -10px;
+    left: -50px;
+  }
+
+  #pieChart {
+    width: 200px;
+    height: 200px;
+  }
   

@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <title>LeetCode Stats</title>
   <link rel="stylesheet" href="style.css">
+  <script src="./chart.umd.js"></script>
 </head>
 <body>
-
   <div id="login">
     <h1>LeetCode Login</h1>
     <input type="text" id="username" placeholder="Enter your LeetCode username" size="27">
@@ -45,6 +45,10 @@
             <p>Ranking</p>
             <p id="ranking"></p>
         </div>
+    </div>
+
+    <div id="chartContainer">
+      <canvas id="pieChart"></canvas>
     </div>
 
     <div id="buttons">

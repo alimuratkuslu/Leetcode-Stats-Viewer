@@ -46,25 +46,65 @@ document.addEventListener('DOMContentLoaded', function() {
         contentDiv.style.display = 'none';
         setPopupSize(400, 200);
     });
+
+    function updatePieChart(data) {
+        const ctx = document.getElementById('pieChart').getContext('2d');
+        const { easySolved, mediumSolved, hardSolved } = data;
+
+        const chartData = {
+            labels: ['Easy', 'Medium', 'Hard'],
+            datasets: [{
+                label: 'Solved Problems',
+                data: [easySolved, mediumSolved, hardSolved],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.6)', 
+                    'rgba(255, 206, 86, 0.6)', 
+                    'rgba(255, 99, 132, 0.6)'  
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        const pieChart = new Chart(ctx, {
+            type: 'pie',
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: 'Solved Problems by Difficulty'
+                }
+            }
+        });
+    }
   
     function fetchLeetCodeData(username) {
-    const apiUrl = `${apiUrlBase}${username}`;
+        const apiUrl = `${apiUrlBase}${username}`;
 
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-        document.getElementById('user').textContent = `Username: ${username}`;
-        document.getElementById('easySolved').textContent = `${data.easySolved}/${data.totalEasy}`;
-        document.getElementById('mediumSolved').textContent = `${data.mediumSolved}/${data.totalMedium}`;
-        document.getElementById('hardSolved').textContent = `${data.hardSolved}/${data.totalHard}`;
-        document.getElementById('totalSolved').textContent = `${data.totalSolved}`;
-        document.getElementById('acceptanceRate').textContent = `${data.acceptanceRate}`;
-        document.getElementById('ranking').textContent = `${data.ranking}`;
-        })
-        .catch(error => {
-        console.error('Error fetching data:', error);
-        document.getElementById('stats').textContent = 'Failed to load data.';
-        });
-      }
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('user').textContent = `Username: ${username}`;
+                document.getElementById('easySolved').textContent = `${data.easySolved}/${data.totalEasy}`;
+                document.getElementById('mediumSolved').textContent = `${data.mediumSolved}/${data.totalMedium}`;
+                document.getElementById('hardSolved').textContent = `${data.hardSolved}/${data.totalHard}`;
+                document.getElementById('totalSolved').textContent = `${data.totalSolved}`;
+                document.getElementById('acceptanceRate').textContent = `${data.acceptanceRate}`;
+                document.getElementById('ranking').textContent = `${data.ranking}`;
+
+                updatePieChart(data);
+                
+            })
+            .catch(error => {
+            console.error('Error fetching data:', error);
+            document.getElementById('stats').textContent = 'Failed to load data.';
+            });
+    }
   });
   
